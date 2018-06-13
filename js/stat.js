@@ -28,7 +28,7 @@ var getMaxElement = function (arr) {
 var getComparisonResult = function (x) {
   var ComparisonResult = (x === 'Вы');
   return ComparisonResult;
-}
+};
 
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
