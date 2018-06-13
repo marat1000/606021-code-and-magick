@@ -25,11 +25,6 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-var getComparisonResult = function (x) {
-  var ComparisonResult = (x === 'Вы');
-  return ComparisonResult;
-};
-
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -46,6 +41,11 @@ window.renderStatistics = function (ctx, players, times) {
   }
 
   var maxTime = getMaxElement(timesRound);
+
+  var getComparisonResult = function (x) {
+    var ComparisonResult = (x === 'Вы');
+    return ComparisonResult;
+  };
 
   for (i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
