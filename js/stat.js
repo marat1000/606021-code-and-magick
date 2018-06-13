@@ -42,14 +42,18 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(timesRound);
 
-  for ( i = 0; i < players.length; i++) {
+  var compareNames;
+
+  for (i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
 
     ctx.fillText(players[i], CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - PADDING);
 
     ctx.fillText(timesRound[i], CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime - PADDING - FONT_GAP - GAP);
 
-    players[i] === 'Вы' ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, 100%, ' + Math.random() * 100 + '%)';
+    compareNames = (players[i] === 'Вы');
+
+    compareNames ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, 100%, ' + Math.random() * 100 + '%)';
 
     ctx.fillRect(CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime - FONT_GAP - PADDING, BAR_WIDTH, (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime);
   }
