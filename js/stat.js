@@ -14,6 +14,7 @@ var HISTOGRAM_HEIGHT = 150;
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color; ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
+var compareNames;
 
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
@@ -42,8 +43,6 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(timesRound);
 
-  var compareNames;
-
   for (i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
 
@@ -51,9 +50,7 @@ window.renderStatistics = function (ctx, players, times) {
 
     ctx.fillText(timesRound[i], CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime - PADDING - FONT_GAP - GAP);
 
-    compareNames = (players[i] === 'Вы');
-
-    compareNames ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, 100%, ' + Math.random() * 100 + '%)';
+    compareNames = (players[i] === 'Вы') ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, ' + Math.random() * 100 + '%, 50%)';
 
     ctx.fillRect(CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime - FONT_GAP - PADDING, BAR_WIDTH, (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime);
   }
