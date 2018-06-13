@@ -42,11 +42,6 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(timesRound);
 
-  var getComparisonResult = function (x) {
-    var ComparisonResult = (x === 'Вы');
-    return ComparisonResult;
-  };
-
   for (i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
 
@@ -54,7 +49,11 @@ window.renderStatistics = function (ctx, players, times) {
 
     ctx.fillText(timesRound[i], CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime - PADDING - FONT_GAP - GAP);
 
-    getComparisonResult(players[i]) ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, ' + Math.random() * 100 + '%, 50%)';
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      ctx.fillStyle = 'hsl(240, ' + Math.random() * 100 + '%, 50%)';
+    }
 
     ctx.fillRect(CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime - FONT_GAP - PADDING, BAR_WIDTH, (HISTOGRAM_HEIGHT * timesRound[i]) / maxTime);
   }
