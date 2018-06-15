@@ -55,7 +55,7 @@ window.renderStatistics = function (ctx, players, times) {
 
   var columnHeight;
 
-  for (i = 0; i < times.length; i++) {
+  for (var i = 0; i < times.length; i++) {
     columnHeight = (HISTOGRAM_HEIGHT * Math.floor(times[i])) / maxTime;
     ctx.fillStyle = TEXT_COLOR;
 
@@ -66,11 +66,5 @@ window.renderStatistics = function (ctx, players, times) {
     getColumnColor(ctx, players[i]);
 
     ctx.fillRect(CLOUD_X + 2 * PADDING + GAP + (BAR_WIDTH + COLUMN_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - columnHeight - FONT_GAP - PADDING, BAR_WIDTH, columnHeight);
-  }
-
-  var timesRound = [];
-
-  for (var i = 0; i < times.length; i++) {
-    timesRound[i] = Math.floor(times[i]);
   }
 };
