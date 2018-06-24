@@ -12,58 +12,20 @@ surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц',
 coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 
-var getRandomItem = function (arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-};
-
-wizards = [
-  {
-    name: getRandomItem(names) + ' ' + getRandomItem(surnames),
-    coatColor: getRandomItem(coatColors),
-    eyesColor: getRandomItem(eyesColors)
-  },
-  {
-    name: getRandomItem(names) + ' ' + getRandomItem(surnames),
-    coatColor: getRandomItem(coatColors),
-    eyesColor: getRandomItem(eyesColors)
-  },
-  {
-    name: getRandomItem(names) + ' ' + getRandomItem(surnames),
-    coatColor: getRandomItem(coatColors),
-    eyesColor: getRandomItem(eyesColors)
-  },
-  {
-    name: getRandomItem(names) + ' ' + getRandomItem(surnames),
-    coatColor: getRandomItem(coatColors),
-    eyesColor: getRandomItem(eyesColors)
+function getArray() {
+  for (i = 0; i < 4; i++) {
+    var getRandomItem = function (arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    };
+    wizards[i] = {
+      name: getRandomItem(names) + ' ' + getRandomItem(surnames),
+      coatColor: getRandomItem(coatColors),
+      eyesColor: getRandomItem(eyesColors)
+    };
   }
-];
+}
 
-// Этот массив вообще можно получить через цикл? Подскажи, пожалуйста, правильный вариант
-// var D = {
-//   name: getRandomItem(names) + ' ' + getRandomItem(surnames),
-//   coatColor: getRandomItem(coatColors),
-//   eyesColor: getRandomItem(eyesColors)
-// };
-// i = 0;
-// while (i < 4) {
-//   wisards[i] = D;
-//   i = i + 1;
-// }
-
-// var gettest = function (m) {
-//   wisards[m] = {
-//     name: getRandomItem(names) + ' ' + getRandomItem(surnames),
-//     coatColor: getRandomItem(coatColors),
-//     eyesColor: getRandomItem(eyesColors)
-//   };
-// };
-// var wisards = [];
-// i = 0;
-// while (i <= 4) {
-//   gettest(i);
-//   i = i + 1;
-// }
+getArray();
 
 var userDialog = document.querySelector('.setup');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
@@ -83,10 +45,14 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var fragment = document.createDocumentFragment();
-for (i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
+function renderSimilarWizards() {
+  var fragment = document.createDocumentFragment();
+  for (i = 0; i < wizards.length; i++) {
+    fragment.appendChild(renderWizard(wizards[i]));
+  }
+  similarListElement.appendChild(fragment);
 }
-similarListElement.appendChild(fragment);
+
+renderSimilarWizards();
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
