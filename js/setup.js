@@ -6,6 +6,7 @@ var coatColors;
 var eyesColors;
 var i;
 var wizards = [];
+var NUMBER_OF_WIZARDS = 4;
 
 names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
@@ -13,7 +14,7 @@ coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', '
 eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 
 function getArray() {
-  for (i = 0; i < 4; i++) {
+  for (i = 0; i < NUMBER_OF_WIZARDS; i++) {
     var getRandomItem = function (arr) {
       return arr[Math.floor(Math.random() * arr.length)];
     };
